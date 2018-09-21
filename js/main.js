@@ -25,23 +25,23 @@ const loadArticles = (name) => {
 	    let articles = data.articles;
 
 	    articles.forEach(function (item, key) {
-			let div = document.createElement("div");
+			let article = document.createElement("article");
 			let image = item.urlToImage;
 
 			if (image) {
-				image = `<img src='${item.urlToImage}'/>`;
+				image = `<figure><img src='${item.urlToImage}'/></figure>`;
 			}
 			else {
 				image = '';
 			}
 
-		    div.innerHTML = `
+		    article.innerHTML = `
 			    ${image}
 				<h2>'${item.title}'</h2>
 				<p>'${item.description}'</p>
-				<a target="blank" href='${item.url}'>Lire l'article</a>
+				<a class="cta" target="blank" href='${item.url}'>Lire l'article</a>
 			`		
-			document.querySelector("main").appendChild(div);
+			document.querySelector("main").appendChild(article);
 		});
 	  });
 	});
